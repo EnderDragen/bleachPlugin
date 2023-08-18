@@ -23,7 +23,7 @@ import org.bukkit.plugin.*;
 @SuppressWarnings("unused")
 public class Main extends JavaPlugin implements CommandExecutor, Listener
 {
-	private AuraParticlesPlugin auraParticlesPlugin;
+    private AuraParticlesPlugin auraParticlesPlugin;
 	public static Map<UUID, Long> cooldownPlayers = new HashMap<>();
     public static String offline;
     public static String noperm;
@@ -34,9 +34,17 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener
 	
 	
     public void onEnable() {
-    	auraParticlesPlugin = AuraParticlesPlugin.getInstance(this);; // Create an instance here
-    	getServer().getPluginManager().registerEvents(new AuraParticlesEventListener(auraParticlesPlugin), this);
-        getCommand("resetbankaicd").setExecutor(new com.enderdragen.samplekitsLVER.particles.ResetBankaiCooldownCommand(auraParticlesPlugin));
+    	 // Initialize the AuraParticlesPlugin instance
+        auraParticlesPlugin = new AuraParticlesPlugin(this);
+
+        // Register the listener for AuraParticlesPlugin
+        getServer().getPluginManager().registerEvents(auraParticlesPlugin, this);
+
+        // Set up the ResetBankaiCooldownCommand executor
+        getCommand("resetbankaicd").setExecutor(new ResetBankaiCooldownCommand(auraParticlesPlugin));
+
+        // Other initialization and registrations
+        // ...
     	// Register Config
         this.registerConfig();
         // Registers commands and their respected classes, e.g
@@ -81,5 +89,6 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener
     }
     
     public void onDisable() {
+    	
     }
 }
