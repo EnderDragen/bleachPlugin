@@ -1,0 +1,36 @@
+name: SampleKitsLVER
+version: 1.0.1 BETA
+main: com.enderdragen.samplekitsLVER.Main
+author: EnderDragen
+api-version: 1.13
+description: Sample Kits, really simple (NO CONFIG) 
+commands:
+  heal: 
+      description: Heals players from damage and hunger.
+  kit1:
+      description: Gives players items from the kitone class.
+      aliases: k1
+  gmc:
+      description: Sets players in Creative/Survival Mode
+  kit2:
+      description: Gives players items from the kittwo class.
+      aliases: k2
+  kit22:
+      description: Gives players items from the kitTwo1 Class. (PTL)
+  k22:
+      description: Gives players items from the kitTwo1 Class. (PTL)
+  fly:
+      description: Gives players the power of flight.
+  feed:
+      description: Feeds players with no need of permission
+  openanvil:
+       description: Opens the players' Anvil
+  allcoordinates:
+       description: No.
+  auraparticles:
+       description: particles 
+  givesword:
+       description: gives custom sword
+  resetbankaicd:
+       description: reset bankai cd
+
