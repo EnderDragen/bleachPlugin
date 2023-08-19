@@ -9,31 +9,29 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.enderdragen.samplekitsLVER.Main;
 
 
-public class AuraParticlesPlugin extends JavaPlugin implements CommandExecutor, Listener {
-	public static Map<UUID, Long> cooldownPlayers = new HashMap<>();
+public class AuraParticlesPlugin implements Listener {
+    public static Map<UUID, Long> cooldownPlayers = new HashMap<>();
     private static AuraParticlesPlugin instance;
     private final Main plugin;
-    private AuraParticlesPlugin(Main plugin) {
-        this.plugin = plugin;
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
+   
     public static AuraParticlesPlugin getInstance(Main plugin) {
         if (instance == null) {
             instance = new AuraParticlesPlugin(plugin);
         }
         return instance;
+    }
+    public AuraParticlesPlugin(Main plugin) {
+        this.plugin = plugin;
     }
     public void triggerAuraParticles(Player player) {
         Location playerLocation = player.getLocation();
@@ -41,9 +39,8 @@ public class AuraParticlesPlugin extends JavaPlugin implements CommandExecutor, 
             .runTaskTimer(plugin, 0L, 1L);
         new ParticleStreamTask(playerLocation)
             .runTaskTimer(plugin, 0L, 1L);
-        
     }
-    @Override
+
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player && label.equalsIgnoreCase("auraparticles")) {
             Player player = (Player) sender;
