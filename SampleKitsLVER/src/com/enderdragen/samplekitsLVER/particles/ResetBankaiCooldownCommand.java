@@ -4,14 +4,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
+import com.enderdragen.samplekitsLVER.Main;
 
-public class ResetBankaiCooldownCommand extends JavaPlugin implements CommandExecutor {
-    private final AuraParticlesPlugin plugin;
+public class ResetBankaiCooldownCommand implements CommandExecutor {
+	 private final Main plugin; // Change 'Main' to your actual plugin's main class
 
-    public ResetBankaiCooldownCommand(AuraParticlesPlugin plugin) {
-        this.plugin = plugin;
-    }
+	    public ResetBankaiCooldownCommand(Main plugin) {
+	        this.plugin = plugin;
+	    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
