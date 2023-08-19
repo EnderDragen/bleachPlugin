@@ -34,15 +34,16 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener
 	
 	
     public void onEnable() {
+    	
     	 // Initialize the AuraParticlesPlugin instance
         auraParticlesPlugin = new AuraParticlesPlugin(this);
-
+        AuraParticlesPlugin auraParticlesPlugin = new AuraParticlesPlugin(this);
+        getServer().getPluginManager().registerEvents(new AuraParticlesEventListener(this), this);
         // Register the listener for AuraParticlesPlugin
         getServer().getPluginManager().registerEvents(auraParticlesPlugin, this);
 
         // Set up the ResetBankaiCooldownCommand executor
         getCommand("resetbankaicd").setExecutor(new ResetBankaiCooldownCommand(this));
-
         // Other initialization and registrations
         // ...
     	// Register Config
@@ -62,8 +63,6 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener
         getServer().getPluginManager().registerEvents(new opCommand(), this);
          loadRecipe();
         final PluginManager pm = this.getServer().getPluginManager();
-        this.getServer().getPluginManager().registerEvents((Listener)this, (Plugin)this);
-        pm.registerEvents((Listener)this, (Plugin)this);
         
     }
     
