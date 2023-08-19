@@ -20,25 +20,23 @@ import com.enderdragen.samplekitsLVER.Main;
 
 
 public class AuraParticlesPlugin implements Listener {
-    public static Map<UUID, Long> cooldownPlayers = new HashMap<>();
     private static AuraParticlesPlugin instance;
+    public static Map<UUID, Long> cooldownPlayers = new HashMap<>();
     private final Main plugin;
    
-    public static AuraParticlesPlugin getInstance(Main plugin) {
-        if (instance == null) {
-            instance = new AuraParticlesPlugin(plugin);
-        }
+    public static AuraParticlesPlugin getInstance() {
         return instance;
     }
+    
     public AuraParticlesPlugin(Main plugin) {
         this.plugin = plugin;
     }
     public void triggerAuraParticles(Player player) {
         Location playerLocation = player.getLocation();
         new OuterRingParticlesTask(playerLocation, 15, 3.0, 5.0, 3, 0.25)
-            .runTaskTimer(plugin, 0L, 1L);
+                .runTaskTimer(plugin, 0L, 1L);
         new ParticleStreamTask(playerLocation)
-            .runTaskTimer(plugin, 0L, 1L);
+                .runTaskTimer(plugin, 0L, 1L);
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
