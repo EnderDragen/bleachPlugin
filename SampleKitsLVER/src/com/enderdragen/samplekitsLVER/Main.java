@@ -41,7 +41,7 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener
         getServer().getPluginManager().registerEvents(auraParticlesPlugin, this);
 
         // Set up the ResetBankaiCooldownCommand executor
-        getCommand("resetbankaicd").setExecutor(new ResetBankaiCooldownCommand(auraParticlesPlugin));
+        getCommand("resetbankaicd").setExecutor(new ResetBankaiCooldownCommand(this));
 
         // Other initialization and registrations
         // ...
